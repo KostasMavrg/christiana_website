@@ -1,8 +1,42 @@
+// Geolocation detection for automatic language selection
+const geoLocationDetector = {
+    async detectLanguage() {
+        // Check if user has already set a preference
+        const savedPreference = localStorage.getItem('preferredLanguage');
+        if (savedPreference) {
+            return savedPreference;
+        }
+        
+        // First, check browser language
+        const browserLang = navigator.language || navigator.userLanguage;
+        if (browserLang.startsWith('el') || browserLang.startsWith('gr')) {
+            return 'el';
+        }
+        
+        // Then try IP geolocation
+        try {
+            const response = await fetch('https://ipapi.co/json/');
+            const data = await response.json();
+            
+            if (data.country_code === 'GR') {
+                return 'el';
+            }
+        } catch (error) {
+            console.log('Geolocation detection failed, using default language');
+        }
+        
+        // Fallback to English
+        return 'en';
+    }
+};
+
 // Language switching functionality
 const languageSwitcher = {
-    currentLang: localStorage.getItem('preferredLanguage') || 'en',
+    currentLang: 'en', // Will be set after detection
     
-    init() {
+    async init() {
+        // Detect language based on location
+        this.currentLang = await geoLocationDetector.detectLanguage();
         this.setLanguage(this.currentLang);
         this.setupEventListeners();
         this.updatePlaceholders();
@@ -46,6 +80,9 @@ const languageSwitcher = {
         // Update HTML lang attribute
         document.documentElement.lang = lang;
         
+        // Update meta tags for SEO (including Athens location)
+        this.updateMetaTags(lang);
+        
         // Update body class for Greek font styling
         if (lang === 'el') {
             document.body.classList.add('greek-text');
@@ -60,6 +97,45 @@ const languageSwitcher = {
         
         // Update placeholders
         this.updatePlaceholders();
+    },
+    
+    updateMetaTags(lang) {
+        // Update title tag with Athens location for better local SEO
+        if (lang === 'el') {
+            document.title = 'Χριστιάνα Ζενέλη - Κλινική Ψυχολόγος | Θεραπεία Άγχους & Online Συνεδρίες στην Αθήνα';
+            this.updateMetaContent('description', 'Κλινική Ψυχολόγος στην Αθήνα. Εξειδικευμένη θεραπεία άγχους, κατάθλιψης, διαχείρισης στρες και συμβουλευτική ζευγαριών στην Αθήνα. Online συνεδρίες και ιδιαίτερες συνεδρίες. Έμπειρη, συμπονετική και επαγγελματική ψυχολογική υποστήριξη στην Αθήνα.');
+            this.updateMetaContent('keywords', 'θεραπεία Αθήνα, ψυχολόγος Αθήνα, κλινική ψυχολόγος Αθήνα, θεραπεία άγχους Αθήνα, θεραπεία κατάθλιψης Αθήνα, online ψυχοθεραπεία Αθήνα, συμβουλευτική ζευγαριών Αθήνα, διαχείριση στρες Αθήνα, ψυχολογική υποστήριξη Αθήνα, ψυχοθεραπεία Αθήνα');
+            this.updateMetaProperty('og:title', 'Χριστιάνα Ζενέλη - Κλινική Ψυχολόγος | Θεραπεία Άγχους & Online Συνεδρίες στην Αθήνα');
+            this.updateMetaProperty('og:description', 'Κλινική Ψυχολόγος στην Αθήνα. Εξειδικευμένη θεραπεία άγχους, κατάθλιψης, διαχείρισης στρες και συμβουλευτική ζευγαριών στην Αθήνα. Online συνεδρίες.');
+            this.updateMetaProperty('og:locale', 'el_GR');
+        } else {
+            document.title = 'Christiana Zeneli - Clinical Psychologist | Anxiety Therapy & Online Sessions in Athens';
+            this.updateMetaContent('description', 'Clinical Psychologist in Athens, Greece. Specialized therapy for anxiety, depression, stress management, and couples counseling in Athens. Online sessions and private consultations. Experienced, compassionate, and professional psychological support in Athens.');
+            this.updateMetaContent('keywords', 'therapy Athens, therapist Athens, psychologist Athens, clinical psychologist Athens, anxiety therapy Athens, depression therapy Athens, couples therapy Athens, online therapy Athens, therapy in Athens Greece');
+            this.updateMetaProperty('og:title', 'Christiana Zeneli - Clinical Psychologist | Anxiety Therapy & Online Sessions in Athens');
+            this.updateMetaProperty('og:description', 'Clinical Psychologist in Athens, Greece. Specialized therapy for anxiety, depression, stress management, and couples counseling in Athens. Online sessions.');
+            this.updateMetaProperty('og:locale', 'en_US');
+        }
+    },
+    
+    updateMetaContent(name, content) {
+        let meta = document.querySelector(`meta[name="${name}"]`);
+        if (!meta) {
+            meta = document.createElement('meta');
+            meta.name = name;
+            document.head.appendChild(meta);
+        }
+        meta.content = content;
+    },
+    
+    updateMetaProperty(property, content) {
+        let meta = document.querySelector(`meta[property="${property}"]`);
+        if (!meta) {
+            meta = document.createElement('meta');
+            meta.setAttribute('property', property);
+            document.head.appendChild(meta);
+        }
+        meta.content = content;
     },
     
     updatePlaceholders() {
@@ -165,7 +241,7 @@ const contactForm = {
     }
 };
 
-// Navbar scroll effect
+// Navbar scroll effect with active link detection
 const navbarScroll = {
     init() {
         const navbar = document.querySelector('.navbar');
@@ -174,13 +250,41 @@ const navbarScroll = {
         window.addEventListener('scroll', () => {
             const currentScroll = window.pageYOffset;
             
+            // Add scrolled class for enhanced styling
             if (currentScroll > 100) {
-                navbar.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.1)';
+                navbar.classList.add('scrolled');
             } else {
-                navbar.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.05)';
+                navbar.classList.remove('scrolled');
             }
             
+            // Update active nav link based on scroll position
+            this.updateActiveLink();
+            
             lastScroll = currentScroll;
+        }, { passive: true });
+    },
+    
+    updateActiveLink() {
+        const sections = document.querySelectorAll('section[id]');
+        const navLinks = document.querySelectorAll('.nav-menu a[href^="#"]');
+        
+        let currentSection = '';
+        const scrollPos = window.pageYOffset + 150;
+        
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.offsetHeight;
+            
+            if (scrollPos >= sectionTop && scrollPos < sectionTop + sectionHeight) {
+                currentSection = section.getAttribute('id');
+            }
+        });
+        
+        navLinks.forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href') === `#${currentSection}`) {
+                link.classList.add('active');
+            }
         });
     }
 };
@@ -333,9 +437,74 @@ languageSwitcher.updatePlaceholders = function() {
     }
 };
 
+// Page Loading Animation
+const pageLoader = {
+    init() {
+        // Add fade-in effect to page
+        document.body.style.opacity = '0';
+        document.body.style.transition = 'opacity 0.3s ease-in';
+        
+        window.addEventListener('load', () => {
+            document.body.style.opacity = '1';
+        });
+    }
+};
+
+// Button Click Animation
+const buttonEffects = {
+    init() {
+        document.querySelectorAll('.btn').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                // Create ripple effect
+                const ripple = document.createElement('span');
+                const rect = this.getBoundingClientRect();
+                const size = Math.max(rect.width, rect.height);
+                const x = e.clientX - rect.left - size / 2;
+                const y = e.clientY - rect.top - size / 2;
+                
+                ripple.style.width = ripple.style.height = size + 'px';
+                ripple.style.left = x + 'px';
+                ripple.style.top = y + 'px';
+                ripple.classList.add('ripple');
+                
+                this.appendChild(ripple);
+                
+                setTimeout(() => ripple.remove(), 600);
+            });
+        });
+    }
+};
+
+// Form Enhancement
+const formEnhancements = {
+    init() {
+        // Add floating label effect
+        const formInputs = document.querySelectorAll('.form-group input, .form-group textarea');
+        
+        formInputs.forEach(input => {
+            // Add focus effects
+            input.addEventListener('focus', function() {
+                this.parentElement.classList.add('focused');
+            });
+            
+            input.addEventListener('blur', function() {
+                if (!this.value) {
+                    this.parentElement.classList.remove('focused');
+                }
+            });
+            
+            // Check if input has value on load
+            if (input.value) {
+                input.parentElement.classList.add('focused');
+            }
+        });
+    }
+};
+
 // Initialize everything when DOM is loaded
-document.addEventListener('DOMContentLoaded', () => {
-    languageSwitcher.init();
+document.addEventListener('DOMContentLoaded', async () => {
+    pageLoader.init();
+    await languageSwitcher.init();
     mobileMenu.init();
     smoothScroll.init();
     contactForm.init();
@@ -343,6 +512,8 @@ document.addEventListener('DOMContentLoaded', () => {
     scrollAnimations.init();
     faqAccordion.init();
     newsletterForm.init();
+    buttonEffects.init();
+    formEnhancements.init();
 });
 
 // Handle page visibility for better UX
