@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Christiana Zeneli - Clinical Psychologist. Professional psychological services in English and Greek.">
+    <title>Christiana Zeneli - Clinical Psychologist</title>
+    <link rel="icon" type="image/jpeg" href="images/site-theme.jpg">
+    <link rel="shortcut icon" type="image/jpeg" href="images/site-theme.jpg">
+    <link rel="apple-touch-icon" href="images/site-theme.jpg">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Noto+Sans:wght@300;400;500;600;700&family=Noto+Sans+Greek+Extended:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- EmailJS -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-content">
+                <div class="logo">
+                    <div class="logo-image">
+                        <img src="images/site-theme.jpg" alt="Christiana Zeneli" class="logo-img" onerror="this.style.display='none';">
+                    </div>
+                    <div class="logo-text">
+                        <h1 data-en="Christiana Zeneli" data-el="Χριστιάνα Ζενέλη">Christiana Zeneli</h1>
+                        <p class="subtitle" data-en="Clinical Psychologist" data-el="Κλινική Ψυχολόγος">Clinical Psychologist</p>
+                    </div>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="#home" data-en="Home" data-el="Αρχική">Home</a></li>
+                    <li><a href="#about" data-en="About" data-el="Σχετικά">About</a></li>
+                    <li><a href="#services" data-en="Services" data-el="Υπηρεσίες">Services</a></li>
+                    <li><a href="#contact" data-en="Contact" data-el="Επικοινωνία">Contact</a></li>
+                </ul>
+                <div class="language-switcher">
+                    <button class="lang-btn active" data-lang="en">EN</button>
+                    <button class="lang-btn" data-lang="el">EL</button>
+                </div>
+                <button class="mobile-menu-toggle" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h2 class="hero-title" data-en="A Safe Space for Your Journey to Well-Being" data-el="Ένας Ασφαλής Χώρος για το Ταξίδι σας προς την Ευημερία"></h2>
+                    <p class="hero-description" data-en="Welcome. I'm Christiana Zeneli, and I'm here to support you on your path toward greater peace, understanding, and personal growth. With years of experience in clinical psychology, I provide compassionate, evidence-based therapy through secure online sessions. Whether you're navigating anxiety, stress, life transitions, or simply seeking deeper self-awareness, I offer a warm, non-judgmental space where you can explore your thoughts and feelings at your own pace. Together, we'll work toward the clarity and balance you deserve." data-el="Καλώς ήρθατε. Είμαι η Χριστιάνα Ζενέλη και είμαι εδώ για να σας στηρίξω στον δρόμο σας προς μεγαλύτερη ειρήνη, κατανόηση και προσωπική ανάπτυξη. Με χρόνια εμπειρίας στην κλινική ψυχολογία, παρέχω συμπονετική, βασισμένη σε αποδεδειγμένες μεθόδους θεραπεία μέσω ασφαλών online συνεδριών. Είτε αντιμετωπίζετε άγχος, στρες, μεταβάσεις στη ζωή ή απλά αναζητάτε βαθύτερη αυτογνωσία, προσφέρω έναν ζεστό, μη-κριτικό χώρο όπου μπορείτε να εξερευνήσετε τις σκέψεις και τα συναισθήματά σας στον δικό σας ρυθμό. Μαζί, θα εργαστούμε προς τη σαφήνεια και την ισορροπία που αξίζετε."></p>
+                    <div class="hero-buttons">
+                        <a href="#contact" class="btn btn-primary" data-en="Book an Appointment" data-el="Κλείστε Ραντεβού">Book an Appointment</a>
+                        <a href="#services" class="btn btn-secondary" data-en="Learn More" data-el="Μάθετε Περισσότερα">Learn More</a>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <div class="profile-photo-container">
+                        <img src="images/profile-photo.jpg" alt="Christiana Zeneli" class="profile-photo" id="profilePhoto" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="image-placeholder" style="display: none;">
+                            <svg viewBox="0 0 400 500" xmlns="http://www.w3.org/2000/svg">
+                                <rect width="400" height="500" fill="#f5f5f5"/>
+                                <circle cx="200" cy="200" r="80" fill="#FFD700" opacity="0.2"/>
+                                <path d="M200 280 L180 320 L220 320 Z" fill="#4A90E2" opacity="0.2"/>
+                                <text x="200" y="450" text-anchor="middle" fill="#999" font-size="16" font-family="Inter">Add your photo</text>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="section-header">
+                <h2 data-en="About Me" data-el="Σχετικά με Εμένα">About Me</h2>
+                <div class="underline"></div>
+            </div>
+            <div class="about-content">
+                <div class="about-grid">
+                    <div class="about-photo-section">
+                        <div class="about-photo-container">
+                            <img src="images/about-photo.jpg" alt="Christiana Zeneli" class="about-photo" id="aboutPhoto" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                            <div class="image-placeholder" style="display: none;">
+                                <svg viewBox="0 0 300 400" xmlns="http://www.w3.org/2000/svg">
+                                    <rect width="300" height="400" fill="#f5f5f5"/>
+                                    <circle cx="150" cy="150" r="60" fill="#FFD700" opacity="0.2"/>
+                                    <text x="150" y="350" text-anchor="middle" fill="#999" font-size="14" font-family="Inter">Add your photo</text>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="about-text">
+                        <h3 class="about-name" data-en="Christiana Zeneli" data-el="Χριστιάνα Ζενέλη">Christiana Zeneli</h3>
+                        <p class="lead" data-en="Welcome to my website!" data-el="Καλώς όρισες στην σελίδα μου!">Welcome to my website!</p>
+                        <p data-en="As a clinical psychologist specializing in online therapy, my mission is to provide you with professional support and guidance through secure video sessions. My goal is to create a safe and confidential virtual space where you can freely express your thoughts and feelings from the comfort of your home." data-el="Ως κλινική ψυχολόγος με ειδίκευση σε online θεραπεία, η αποστολή μου είναι να σου παρέχω επαγγελματική υποστήριξη και καθοδήγηση μέσω ασφαλών συνεδριών βίντεο. Σκοπός μου είναι να δημιουργήσω έναν ασφαλή και εμπιστευτικό εικονικό χώρο όπου θα μπορείς να εκφράσεις τις σκέψεις και τα συναισθήματά σου ελεύθερα από την άνεση του σπιτιού σου."></p>
+                        <p data-en="I specialize in anxiety management, stress reduction, depression support, and personal development through online sessions. In my professional journey, I have worked with individuals facing various challenges including anxiety disorders, depression, relationship issues, low self-esteem, and stress-related difficulties. I firmly believe that every person has the strength to change and grow, and I am here to support you on this journey through convenient online therapy sessions." data-el="Εξειδικεύομαι στη διαχείριση άγχους, τη μείωση του στρες, τη στήριξη κατάθλιψης και την προσωπική ανάπτυξη μέσω συνεδριών εξ αποστάσεως. Στην επαγγελματική μου πορεία, έχω συνεργαστεί με άτομα που αντιμετωπίζουν διάφορες προκλήσεις, συμπεριλαμβανομένων διαταραχών άγχους, κατάθλιψης, θεμάτων σχέσεων, χαμηλής αυτοεκτίμησης και δυσκολιών σχετικών με το στρες. Πιστεύω ακράδαντα ότι κάθε άνθρωπος έχει τη δύναμη να αλλάξει και να αναπτυχθεί, και είμαι εδώ για να σε στηρίξω σε αυτό το ταξίδι μέσω βολικών συνεδριών εξ αποστάσεως."></p>
+                        <p data-en="All my therapy sessions are conducted online, offering you flexibility, privacy, and the same professional quality as in-person sessions. Whether you're dealing with anxiety, stress, depression, or seeking personal growth, I'm here to help you navigate these challenges through secure and convenient virtual sessions." data-el="Όλες οι θεραπευτικές μου συνεδρίες διεξάγονται online, προσφέροντάς σας ευελιξία, ιδιωτικότητα και την ίδια επαγγελματική ποιότητα με τις συνεδρίες πρόσωπο με πρόσωπο. Είτε αντιμετωπίζετε άγχος, στρες, κατάθλιψη ή αναζητάτε προσωπική ανάπτυξη, είμαι εδώ για να σας βοηθήσω να αντιμετωπίσετε αυτές τις προκλήσεις μέσω ασφαλών και βολικών εικονικών συνεδριών."></p>
+                        <div class="credentials">
+                            <h3 data-en="Credentials & Qualifications" data-el="Πιστοποιήσεις & Προσόντα">Credentials & Qualifications</h3>
+                            <ul>
+                                <li data-en="Licensed Clinical Psychologist" data-el="Άδεια Ασκήσεως Επαγγέλματος Κλινικής Ψυχολόγου"></li>
+                                <li data-en="Evidence-based therapeutic approaches" data-el="Θεραπευτικές προσεγγίσεις βασισμένες σε αποδεδειγμένες μεθόδους"></li>
+                                <li data-en="Bilingual services (English & Greek)" data-el="Δίγλωσσες υπηρεσίες (Αγγλικά & Ελληνικά)"></li>
+                            </ul>
+                        </div>
+                        <div class="cv-download">
+                            <a href="cv/christiana-zeneli-cv.pdf" class="btn btn-outline" download data-en="Download CV" data-el="Λήψη Βιογραφικού">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M21 15V19C21 19.5304 20.7893 20.0391 20.4142 20.4142C20.0391 20.7893 19.5304 21 19 21H5C4.46957 21 3.96086 20.7893 3.58579 20.4142C3.21071 20.0391 3 19.5304 3 19V15M7 10L12 15M12 15L17 10M12 15V3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                                <span data-en="Download CV" data-el="Λήψη Βιογραφικού">Download CV</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <div class="container">
+            <div class="section-header">
+                <h2 data-en="Services" data-el="Υπηρεσίες">Services</h2>
+                <div class="underline"></div>
+                <p class="section-subtitle" data-en="Professional online therapy sessions focusing on anxiety management, stress reduction, and personal well-being" data-el="Επαγγελματικές συνεδρίες εξ αποστάσεως με εστίαση στη διαχείριση άγχους, τη μείωση του στρες και την προσωπική ευημερία"></p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="32" cy="32" r="30" stroke="#4A90E2" stroke-width="2"/>
+                            <path d="M32 20 L32 32 L42 38" stroke="#4A90E2" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+                    <h3 data-en="Individual Therapy" data-el="Ατομική Ψυχοθεραπεία">Individual Therapy</h3>
+                    <p class="service-subtitle" data-en="Online Sessions | Adolescents & Adults" data-el="Συνεδρίες Εξ Αποστάσεως | Εφήβων & Ενηλίκων">Online Sessions | Adolescents & Adults</p>
+                    <p data-en="Individual online therapy sessions that involve collaboration between client and therapist in a safe, supportive, and confidential virtual environment. Our approach focuses on the relationship between thoughts, emotions, and behaviors, with the goal of improving mental health. All sessions are conducted via secure video platforms." data-el="Ατομικές συνεδρίες εξ αποστάσεως που περιλαμβάνουν τη συνεργασία του θεραπευόμενου με τον θεραπευτή σε ένα ασφαλές, υποστηρικτικό και εμπιστευτικό εικονικό περιβάλλον. Η προσέγγισή μας επικεντρώνεται στη σχέση μεταξύ σκέψεων, συναισθημάτων και συμπεριφορών, με στόχο τη βελτίωση της ψυχικής υγείας. Όλες οι συνεδρίες διεξάγονται μέσω ασφαλών πλατφορμών βίντεο."></p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="20" cy="32" r="12" stroke="#FFD700" stroke-width="2"/>
+                            <circle cx="44" cy="32" r="12" stroke="#FFD700" stroke-width="2"/>
+                            <path d="M32 20 L32 44" stroke="#FFD700" stroke-width="2"/>
+                        </svg>
+                    </div>
+                    <h3 data-en="Couples Therapy" data-el="Θεραπεία Ζεύγους">Couples Therapy</h3>
+                    <p class="service-subtitle" data-en="Online Sessions" data-el="Συνεδρίες Εξ Αποστάσεως">Online Sessions</p>
+                    <p data-en="Online couples therapy sessions designed for partners who wish to improve their relationship, resolve conflicts, and develop deeper communication. Through virtual sessions, the therapist works with both partners to identify and address relationship challenges. Convenient for couples who cannot attend in-person sessions or prefer the comfort of their own space." data-el="Συνεδρίες θεραπείας ζεύγους εξ αποστάσεως σχεδιασμένες για συντρόφους που επιθυμούν να βελτιώσουν τη σχέση τους, να επιλύσουν συγκρούσεις και να αναπτύξουν μια βαθύτερη επικοινωνία. Μέσα από εικονικές συνεδρίες, ο θεραπευτής συνεργάζεται με τους δύο συντρόφους για να εντοπίσει και να αντιμετωπίσει τις προκλήσεις στη σχέση. Βολικό για ζευγάρια που δεν μπορούν να παραστούν σε συνεδρίες πρόσωπο με πρόσωπο ή προτιμούν την άνεση του δικού τους χώρου."></p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="16" y="20" width="32" height="24" rx="4" stroke="#4A90E2" stroke-width="2"/>
+                            <path d="M24 32 L32 40 L40 32" stroke="#4A90E2" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+                    <h3 data-en="Anxiety & Stress Management" data-el="Διαχείριση Άγχους & Στρες">Anxiety & Stress Management</h3>
+                    <p class="service-subtitle" data-en="Online Sessions" data-el="Συνεδρίες Εξ Αποστάσεως">Online Sessions</p>
+                    <p data-en="Specialized online therapy sessions focusing on anxiety and stress management. Through evidence-based techniques, we work together to identify triggers, develop coping strategies, and build resilience. Learn practical tools to manage daily stress, panic attacks, and anxiety symptoms from the comfort of your home." data-el="Εξειδικευμένες συνεδρίες εξ αποστάσεως με εστίαση στη διαχείριση άγχους και στρες. Μέσα από τεχνικές βασισμένες σε αποδεδειγμένες μεθόδους, συνεργαζόμαστε για να εντοπίσουμε τους παράγοντες που προκαλούν άγχος, να αναπτύξουμε στρατηγικές αντιμετώπισης και να οικοδομήσουμε ανθεκτικότητα. Μάθετε πρακτικά εργαλεία για τη διαχείριση της καθημερινής πίεσης, των κρίσεων πανικού και των συμπτωμάτων άγχους από την άνεση του σπιτιού σας."></p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M32 16 L40 28 L28 28 Z" stroke="#FFD700" stroke-width="2" fill="none"/>
+                            <circle cx="32" cy="40" r="8" stroke="#FFD700" stroke-width="2"/>
+                        </svg>
+                    </div>
+                    <h3 data-en="Depression Support" data-el="Στήριξη Κατάθλιψης">Depression Support</h3>
+                    <p class="service-subtitle" data-en="Online Sessions" data-el="Συνεδρίες Εξ Αποστάσεως">Online Sessions</p>
+                    <p data-en="Compassionate online support for individuals experiencing depression. Through virtual sessions, we explore feelings of sadness, hopelessness, and loss of interest, working together to develop strategies for recovery and improved mood. Access professional help from wherever you feel most comfortable." data-el="Συμπονετική online στήριξη για άτομα που αντιμετωπίζουν κατάθλιψη. Μέσα από εικονικές συνεδρίες, εξερευνούμε τα συναισθήματα λύπης, απελπισίας και απώλειας ενδιαφέροντος, συνεργαζόμενοι για την ανάπτυξη στρατηγικών ανάκαμψης και βελτίωσης της διάθεσης. Αποκτήστε επαγγελματική βοήθεια από όπου αισθάνεστε πιο άνετα."></p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="32" cy="32" r="20" stroke="#4A90E2" stroke-width="2"/>
+                            <path d="M32 20 L32 32 L42 38" stroke="#4A90E2" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+                    <h3 data-en="Personal Development & Self-Esteem" data-el="Προσωπική Ανάπτυξη & Αυτοεκτίμηση">Personal Development & Self-Esteem</h3>
+                    <p class="service-subtitle" data-en="Online Sessions" data-el="Συνεδρίες Εξ Αποστάσεως">Online Sessions</p>
+                    <p data-en="Online sessions focused on personal growth, building self-confidence, and developing a positive self-image. We work together to overcome self-doubt, set meaningful goals, and cultivate a stronger sense of self-worth through convenient virtual therapy sessions." data-el="Συνεδρίες εξ αποστάσεως με εστίαση στην προσωπική ανάπτυξη, την οικοδόμηση αυτοπεποίθησης και την ανάπτυξη θετικής αυτοεικόνας. Συνεργαζόμαστε για να ξεπεράσουμε την αυτοαμφισβήτηση, να θέσουμε ουσιαστικούς στόχους και να καλλιεργήσουμε μια ισχυρότερη αίσθηση αυτοεκτίμησης μέσω βολικών εικονικών θεραπευτικών συνεδριών."></p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="12" y="16" width="40" height="32" rx="4" stroke="#FFD700" stroke-width="2"/>
+                            <circle cx="32" cy="32" r="6" stroke="#FFD700" stroke-width="2"/>
+                        </svg>
+                    </div>
+                    <h3 data-en="How Online Sessions Work" data-el="Πώς Λειτουργούν οι Συνεδρίες Εξ Αποστάσεως">How Online Sessions Work</h3>
+                    <p class="service-subtitle" data-en="Secure & Convenient" data-el="Ασφαλείς & Βολικές">Secure & Convenient</p>
+                    <p data-en="All therapy sessions are conducted online through secure video platforms (Zoom, Skype, Viber). Simply book your appointment, receive a secure link, and connect from the comfort of your home. Online therapy offers the same professional quality as in-person sessions with added flexibility, privacy, and convenience. Perfect for busy schedules or when you prefer the comfort of your own space." data-el="Όλες οι θεραπευτικές συνεδρίες διεξάγονται online μέσω ασφαλών πλατφορμών βίντεο (Zoom, Skype, Viber). Απλά κλείστε το ραντεβού σας, λάβετε έναν ασφαλή σύνδεσμο και συνδεθείτε από την άνεση του σπιτιού σας. Η online θεραπεία προσφέρει την ίδια επαγγελματική ποιότητα με τις συνεδρίες πρόσωπο με πρόσωπο με επιπλέον ευελιξία, ιδιωτικότητα και άνεση. Ιδανικό για απασχολημένους χρονοδιαγράμματα ή όταν προτιμάτε την άνεση του δικού σας χώρου."></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trust & Credentials Section -->
+    <section class="trust-section">
+        <div class="container">
+            <div class="trust-grid">
+                <div class="trust-item">
+                    <div class="trust-icon">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M9 12L11 14L15 10M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z" stroke="#4A90E2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <h3 data-en="Licensed Professional" data-el="Άδεια Ασκήσεως Επαγγέλματος">Licensed Professional</h3>
+                    <p data-en="Fully licensed and certified" data-el="Πλήρως άδεια και πιστοποιημένη">Fully licensed and certified</p>
+                </div>
+                <div class="trust-item">
+                    <div class="trust-icon">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 6.25278V19.2528M12 6.25278C10.8321 5.47686 9.24649 5 7.5 5C5.75351 5 4.16789 5.47686 3 6.25278V19.2528C4.16789 18.4769 5.75351 18 7.5 18C9.24649 18 10.8321 18.4769 12 19.2528M12 6.25278C13.1679 5.47686 14.7535 5 16.5 5C18.2465 5 19.8321 5.47686 21 6.25278V19.2528C19.8321 18.4769 18.2465 18 16.5 18C14.7535 18 13.1679 18.4769 12 19.2528" stroke="#4A90E2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <h3 data-en="Evidence-Based" data-el="Βασισμένη σε Αποδεδειγμένες Μεθόδους">Evidence-Based</h3>
+                    <p data-en="Proven therapeutic approaches" data-el="Αποδεδειγμένες θεραπευτικές προσεγγίσεις">Proven therapeutic approaches</p>
+                </div>
+                <div class="trust-item">
+                    <div class="trust-icon">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="#4A90E2" stroke-width="2"/>
+                            <path d="M12 6V12L16 14" stroke="#4A90E2" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+                    <h3 data-en="Years of Experience" data-el="Χρόνια Εμπειρίας">Years of Experience</h3>
+                    <p data-en="Dedicated to your well-being" data-el="Αφοσιωμένη στην ευημερία σας">Dedicated to your well-being</p>
+                </div>
+                <div class="trust-item">
+                    <div class="trust-icon">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M9 12L11 14L15 10M7.83543 2.69766L2.24659 8.2865C1.85407 8.67902 1.85407 9.31219 2.24659 9.70471L10.2929 17.751C10.6834 18.1415 11.3166 18.1415 11.7071 17.751L21.7534 7.70471C22.1459 7.31219 22.1459 6.67902 21.7534 6.2865L16.1646 0.69766C15.772 0.305137 15.1389 0.305137 14.7463 0.69766L9.15751 6.2865C8.76499 6.67902 8.76499 7.31219 9.15751 7.70471L7.83543 2.69766Z" stroke="#4A90E2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <h3 data-en="Confidential & Secure" data-el="Εμπιστευτικό & Ασφαλές">Confidential & Secure</h3>
+                    <p data-en="Your privacy is protected" data-el="Η ιδιωτικότητά σας προστατεύεται">Your privacy is protected</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Inspirational Quote Section -->
+    <section class="quote-section">
+        <div class="container">
+            <div class="quote-content">
+                <svg class="quote-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M3 21C3 17.4 5.4 15 9 15C12.6 15 15 17.4 15 21M15 21H3M15 21V19M15 3C15 6.6 12.6 9 9 9C5.4 9 3 6.6 3 3M3 3H15M3 3V5M21 21C21 17.4 18.6 15 15 15C11.4 15 9 17.4 9 21M9 21H21M9 21V19M21 3C21 6.6 18.6 9 15 9C11.4 9 9 6.6 9 3M9 3H21M9 3V5" stroke="#4A90E2" stroke-width="1.5" stroke-linecap="round"/>
+                </svg>
+                <blockquote>
+                    <p class="quote-text" data-en="Taking the first step toward therapy is an act of courage. You don't have to face your challenges alone." data-el="Το να κάνετε το πρώτο βήμα προς τη θεραπεία είναι μια πράξη θάρρους. Δεν χρειάζεται να αντιμετωπίσετε τις προκλήσεις σας μόνοι σας.">Taking the first step toward therapy is an act of courage. You don't have to face your challenges alone.</p>
+                </blockquote>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="faq">
+        <div class="container">
+            <div class="section-header">
+                <h2 data-en="Frequently Asked Questions" data-el="Συχνές Ερωτήσεις">Frequently Asked Questions</h2>
+                <div class="underline"></div>
+            </div>
+            <div class="faq-container">
+                <div class="faq-item">
+                    <button class="faq-question" data-en="How long does a therapy session last?" data-el="Πόση διάρκεια έχει μια θεραπευτική συνεδρία;">
+                        <span data-en="How long does a therapy session last?" data-el="Πόση διάρκεια έχει μια θεραπευτική συνεδρία;">How long does a therapy session last?</span>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M6 9L12 15L18 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                    <div class="faq-answer">
+                        <p data-en="A typical therapy session lasts 50-60 minutes. The duration may vary depending on the type of therapy and your specific needs." data-el="Μια τυπική θεραπευτική συνεδρία διαρκεί 50-60 λεπτά. Η διάρκεια μπορεί να διαφέρει ανάλογα με τον τύπο της θεραπείας και τις συγκεκριμένες σας ανάγκες.">A typical therapy session lasts 50-60 minutes. The duration may vary depending on the type of therapy and your specific needs.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question" data-en="How many sessions will I need?" data-el="Πόσες συνεδρίες θα χρειαστώ;">
+                        <span data-en="How many sessions will I need?" data-el="Πόσες συνεδρίες θα χρειαστώ;">How many sessions will I need?</span>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M6 9L12 15L18 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                    <div class="faq-answer">
+                        <p data-en="The number of sessions varies depending on your individual needs and goals. Some people benefit from short-term therapy (6-12 sessions), while others may need longer-term support. We will discuss this together during our initial consultation." data-el="Ο αριθμός των συνεδριών διαφέρει ανάλογα με τις ατομικές σας ανάγκες και στόχους. Ορισμένοι άνθρωποι επωφελούνται από βραχυπρόθεσμη θεραπεία (6-12 συνεδρίες), ενώ άλλοι μπορεί να χρειαστούν μακροπρόθεσμη στήριξη. Θα το συζητήσουμε μαζί κατά τη διάρκεια της αρχικής μας συνάντησης.">The number of sessions varies depending on your individual needs and goals. Some people benefit from short-term therapy (6-12 sessions), while others may need longer-term support. We will discuss this together during our initial consultation.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question" data-en="Is online therapy as effective as in-person therapy?" data-el="Είναι η online θεραπεία εξίσου αποτελεσματική με την προσωπική;">
+                        <span data-en="Is online therapy as effective as in-person therapy?" data-el="Είναι η online θεραπεία εξίσου αποτελεσματική με την προσωπική;">Is online therapy as effective as in-person therapy?</span>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M6 9L12 15L18 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                    <div class="faq-answer">
+                        <p data-en="Yes, research shows that online therapy can be just as effective as in-person therapy for many conditions. It offers convenience and flexibility while maintaining the same level of professional care and confidentiality." data-el="Ναι, έρευνες δείχνουν ότι η online θεραπεία μπορεί να είναι εξίσου αποτελεσματική με την προσωπική θεραπεία για πολλές καταστάσεις. Προσφέρει άνεση και ευελιξία διατηρώντας το ίδιο επίπεδο επαγγελματικής φροντίδας και εμπιστευτικότητας.">Yes, research shows that online therapy can be just as effective as in-person therapy for many conditions. It offers convenience and flexibility while maintaining the same level of professional care and confidentiality.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question" data-en="What should I expect in my first session?" data-el="Τι να περιμένω στην πρώτη μου συνεδρία;">
+                        <span data-en="What should I expect in my first session?" data-el="Τι να περιμένω στην πρώτη μου συνεδρία;">What should I expect in my first session?</span>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M6 9L12 15L18 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                    <div class="faq-answer">
+                        <p data-en="The first session is an opportunity for us to get to know each other. I will ask about your background, current concerns, and goals for therapy. This helps me understand your needs and determine the best approach for our work together." data-el="Η πρώτη συνεδρία είναι μια ευκαιρία για να γνωριστούμε. Θα ρωτήσω για το ιστορικό σας, τις τρέχουσες ανησυχίες σας και τους στόχους σας για τη θεραπεία. Αυτό με βοηθάει να κατανοήσω τις ανάγκες σας και να καθορίσω την καλύτερη προσέγγιση για τη συνεργασία μας.">The first session is an opportunity for us to get to know each other. I will ask about your background, current concerns, and goals for therapy. This helps me understand your needs and determine the best approach for our work together.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question" data-en="Is everything I share confidential?" data-el="Είναι όλα όσα μοιράζομαι εμπιστευτικά;">
+                        <span data-en="Is everything I share confidential?" data-el="Είναι όλα όσα μοιράζομαι εμπιστευτικά;">Is everything I share confidential?</span>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M6 9L12 15L18 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                    <div class="faq-answer">
+                        <p data-en="Yes, confidentiality is a fundamental aspect of therapy. Everything you share is kept strictly confidential, except in rare circumstances where there is a risk of harm to yourself or others, which I will explain in detail during our first session." data-el="Ναι, η εμπιστευτικότητα είναι μια θεμελιώδης πτυχή της θεραπείας. Όλα όσα μοιράζεστε διατηρούνται αυστηρά εμπιστευτικά, εκτός από σπάνιες περιπτώσεις όπου υπάρχει κίνδυνος βλάβης στον εαυτό σας ή σε άλλους, κάτι που θα εξηγήσω λεπτομερώς κατά τη διάρκεια της πρώτης μας συνεδρίας.">Yes, confidentiality is a fundamental aspect of therapy. Everything you share is kept strictly confidential, except in rare circumstances where there is a risk of harm to yourself or others, which I will explain in detail during our first session.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="newsletter">
+        <div class="container">
+            <div class="newsletter-content">
+                <h2 data-en="Newsletter" data-el="Newsletter">Newsletter</h2>
+                <p data-en="Subscribe to receive the latest news and exclusive mental health tips!" data-el="Εγγραφείτε για να λαμβάνετε τα τελευταία νέα μας αλλά και αποκλειστικές συμβουλές ψυχικής υγείας!">Subscribe to receive the latest news and exclusive mental health tips!</p>
+                <form class="newsletter-form" id="newsletterForm">
+                    <input type="email" placeholder="Your email address" data-en-placeholder="Your email address" data-el-placeholder="Η διεύθυνση email σας" required>
+                    <button type="submit" class="btn btn-primary" data-en="Subscribe" data-el="Εγγραφή">Subscribe</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="section-header">
+                <h2 data-en="Get in Touch" data-el="Επικοινωνήστε μαζί μας">Get in Touch</h2>
+                <div class="underline"></div>
+                <p class="section-subtitle" data-en="Ready to take the first step? Contact me to schedule an appointment." data-el="Έτοιμοι να κάνετε το πρώτο βήμα; Επικοινωνήστε μαζί μου για να προγραμματίσετε ένα ραντεβού."></p>
+            </div>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="info-card">
+                        <div class="info-icon">
+                            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M3 8L10.89 13.26C11.2187 13.4793 11.6049 13.5963 12 13.5963C12.3951 13.5963 12.7813 13.4793 13.11 13.26L21 8M5 19H19C19.5304 19 20.0391 18.7893 20.4142 18.4142C20.7893 18.0391 21 17.5304 21 17V7C21 6.46957 20.7893 5.96086 20.4142 5.58579C20.0391 5.21071 19.5304 5 19 5H5C4.46957 5 3.96086 5.21071 3.58579 5.58579C3.21071 5.96086 3 6.46957 3 7V17C3 17.5304 3.21071 18.0391 3.58579 18.4142C3.96086 18.7893 4.46957 19 5 19Z" stroke="#4A90E2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                        <h3 data-en="Email" data-el="Email">Email</h3>
+                        <p><a href="mailto:contact@christianazeneli.com">contact@christianazeneli.com</a></p>
+                    </div>
+                    <div class="info-card">
+                        <div class="info-icon">
+                            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M3 5C3 3.89543 3.89543 3 5 3H8.27924C8.70967 3 9.09181 3.27543 9.22792 3.68377L10.7257 8.17721C10.8831 8.64932 10.6694 9.16531 10.2243 9.38787L7.96701 10.5165C9.06925 12.9612 11.0388 14.9308 13.4835 16.033L14.6121 13.7757C14.8347 13.3306 15.3507 13.1169 15.8228 13.2743L20.3162 14.7721C20.7246 14.9082 21 15.2903 21 15.7208V19C21 20.1046 20.1046 21 19 21H18C9.71573 21 3 14.2843 3 6V5Z" stroke="#FFD700" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                        <h3 data-en="Phone" data-el="Τηλέφωνο">Phone</h3>
+                        <p><a href="tel:+306900000000">+30 690 000 0000</a></p>
+                    </div>
+                    <div class="info-card">
+                        <div class="info-icon">
+                            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M21 10C21 17 12 23 12 23C12 23 3 17 3 10C3 7.61305 3.94821 5.32387 5.63604 3.63604C7.32387 1.94821 9.61305 1 12 1C14.3869 1 16.6761 1.94821 18.364 3.63604C20.0518 5.32387 21 7.61305 21 10Z" stroke="#4A90E2" stroke-width="2"/>
+                                <circle cx="12" cy="10" r="3" stroke="#4A90E2" stroke-width="2"/>
+                            </svg>
+                        </div>
+                        <h3 data-en="Location" data-el="Τοποθεσία">Location</h3>
+                        <p data-en="Athens, Greece" data-el="Αθήνα, Ελλάδα">Athens, Greece</p>
+                    </div>
+                    <div class="info-card cv-card">
+                        <div class="info-icon">
+                            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M14 2H6C5.46957 2 4.96086 2.21071 4.58579 2.58579C4.21071 2.96086 4 3.46957 4 4V20C4 20.5304 4.21071 21.0391 4.58579 21.4142C4.96086 21.7893 5.46957 22 6 22H18C18.5304 22 19.0391 21.7893 19.4142 21.4142C19.7893 21.0391 20 20.5304 20 20V8L14 2Z" stroke="#FFD700" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M14 2V8H20" stroke="#FFD700" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M16 13H8" stroke="#FFD700" stroke-width="2" stroke-linecap="round"/>
+                                <path d="M16 17H8" stroke="#FFD700" stroke-width="2" stroke-linecap="round"/>
+                                <path d="M10 9H9H8" stroke="#FFD700" stroke-width="2" stroke-linecap="round"/>
+                            </svg>
+                        </div>
+                        <h3 data-en="Curriculum Vitae" data-el="Βιογραφικό">Curriculum Vitae</h3>
+                        <p data-en="Download my professional CV" data-el="Λήψη του επαγγελματικού μου βιογραφικού">Download my professional CV</p>
+                        <a href="cv/christiana-zeneli-cv.pdf" class="btn btn-small" download data-en="Download" data-el="Λήψη">Download</a>
+                    </div>
+                </div>
+                <div class="contact-form-container">
+                    <form class="contact-form" id="contactForm">
+                        <div class="form-group">
+                            <label for="name" data-en="Name" data-el="Όνομα">Name</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email" data-en="Email" data-el="Email">Email</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone" data-en="Phone" data-el="Τηλέφωνο">Phone</label>
+                            <input type="tel" id="phone" name="phone">
+                        </div>
+                        <div class="form-group">
+                            <label for="message" data-en="Message" data-el="Μήνυμα">Message</label>
+                            <textarea id="message" name="message" rows="5" required data-en-placeholder="Tell me about how I can help you..." data-el-placeholder="Πείτε μου πώς μπορώ να σας βοηθήσω..."></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary" data-en="Send Message" data-el="Αποστολή Μηνύματος">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4 data-en="Christiana Zeneli" data-el="Χριστιάνα Ζενέλη">Christiana Zeneli</h4>
+                    <p data-en="Clinical Psychologist dedicated to providing compassionate, professional psychological support. Together, we can work towards your well-being and personal growth." data-el="Κλινική Ψυχολόγος αφοσιωμένη στην παροχή συμπονετικής, επαγγελματικής ψυχολογικής στήριξης. Μαζί, μπορούμε να εργαστούμε προς την ευημερία και την προσωπική σας ανάπτυξη.">Clinical Psychologist dedicated to providing compassionate, professional psychological support. Together, we can work towards your well-being and personal growth.</p>
+                </div>
+                <div class="footer-section">
+                    <h4 data-en="Services" data-el="Υπηρεσίες">Services</h4>
+                    <ul>
+                        <li><a href="#services" data-en="Individual Therapy" data-el="Ατομική Θεραπεία">Individual Therapy</a></li>
+                        <li><a href="#services" data-en="Couples Therapy" data-el="Θεραπεία Ζευγαριών">Couples Therapy</a></li>
+                        <li><a href="#services" data-en="Anxiety & Stress Management" data-el="Διαχείριση Άγχους & Άγχους">Anxiety & Stress Management</a></li>
+                        <li><a href="#services" data-en="Depression Support" data-el="Στήριξη κατά της Κατάθλιψης">Depression Support</a></li>
+                        <li><a href="#services" data-en="Online Sessions" data-el="Online Συνεδρίες">Online Sessions</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4 data-en="About" data-el="Σχετικά">About</h4>
+                    <ul>
+                        <li><a href="#about" data-en="About Me" data-el="Σχετικά με Εμένα">About Me</a></li>
+                        <li><a href="#about" data-en="Credentials" data-el="Πιστοποιήσεις">Credentials</a></li>
+                        <li><a href="cv/christiana-zeneli-cv.pdf" download data-en="Download CV" data-el="Λήψη Βιογραφικού">Download CV</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4 data-en="Contact" data-el="Επικοινωνία">Contact</h4>
+                    <ul>
+                        <li><a href="mailto:contact@christianazeneli.com">contact@christianazeneli.com</a></li>
+                        <li><a href="tel:+306900000000">+30 690 000 0000</a></li>
+                        <li><a href="#contact" data-en="Book Appointment" data-el="Κλείστε Ραντεβού">Book Appointment</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p data-en="&copy; 2024 Christiana Zeneli. All rights reserved." data-el="&copy; 2024 Χριστιάνα Ζενέλη. Όλα τα δικαιώματα διατηρούνται.">&copy; 2024 Christiana Zeneli. All rights reserved.</p>
+                <div class="footer-links">
+                    <a href="#home" data-en="Privacy Policy" data-el="Πολιτική Απορρήτου">Privacy Policy</a>
+                    <span>|</span>
+                    <a href="#home" data-en="Terms of Service" data-el="Όροι Χρήσης">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
