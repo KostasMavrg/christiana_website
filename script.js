@@ -536,6 +536,93 @@ const formEnhancements = {
     }
 };
 
+// Mobile-Specific Enhancements
+const mobileEnhancements = {
+    init() {
+        // Hide floating CTA when near contact section
+        this.handleFloatingButton();
+        
+        // Add active states for better touch feedback
+        this.addTouchFeedback();
+        
+        // Optimize form inputs for mobile
+        this.optimizeMobileInputs();
+        
+        // Auto-hide mobile menu on scroll
+        this.autoHideMenuOnScroll();
+    },
+    
+    handleFloatingButton() {
+        const floatingBtn = document.querySelector('.mobile-cta-button');
+        const contactSection = document.querySelector('#contact');
+        
+        if (!floatingBtn || !contactSection) return;
+        
+        window.addEventListener('scroll', () => {
+            const contactRect = contactSection.getBoundingClientRect();
+            const isNearContact = contactRect.top < window.innerHeight;
+            
+            if (isNearContact) {
+                floatingBtn.style.opacity = '0';
+                floatingBtn.style.pointerEvents = 'none';
+            } else {
+                floatingBtn.style.opacity = '1';
+                floatingBtn.style.pointerEvents = 'auto';
+            }
+        }, { passive: true });
+    },
+    
+    addTouchFeedback() {
+        // Add ripple effect on mobile taps
+        document.querySelectorAll('.service-card, .trust-item, .info-card, .btn').forEach(element => {
+            element.addEventListener('touchstart', function() {
+                this.style.transform = 'scale(0.98)';
+            }, { passive: true });
+            
+            element.addEventListener('touchend', function() {
+                setTimeout(() => {
+                    this.style.transform = '';
+                }, 150);
+            }, { passive: true });
+        });
+    },
+    
+    optimizeMobileInputs() {
+        // Prevent zoom on input focus for iOS
+        const inputs = document.querySelectorAll('input, textarea');
+        inputs.forEach(input => {
+            if (input.type !== 'submit' && input.type !== 'button') {
+                input.addEventListener('focus', function() {
+                    if (window.innerWidth < 768) {
+                        // Prevent iOS zoom
+                        const fontSize = window.getComputedStyle(this).fontSize;
+                        if (parseFloat(fontSize) < 16) {
+                            this.style.fontSize = '16px';
+                        }
+                    }
+                });
+            }
+        });
+    },
+    
+    autoHideMenuOnScroll() {
+        const navMenu = document.querySelector('.nav-menu');
+        const toggle = document.querySelector('.mobile-menu-toggle');
+        let lastScroll = 0;
+        
+        window.addEventListener('scroll', () => {
+            if (navMenu && navMenu.classList.contains('active')) {
+                const currentScroll = window.pageYOffset;
+                if (Math.abs(currentScroll - lastScroll) > 50) {
+                    navMenu.classList.remove('active');
+                    if (toggle) toggle.classList.remove('active');
+                }
+                lastScroll = currentScroll;
+            }
+        }, { passive: true });
+    }
+};
+
 // Initialize everything when DOM is loaded
 document.addEventListener('DOMContentLoaded', async () => {
     pageLoader.init();
@@ -549,6 +636,11 @@ document.addEventListener('DOMContentLoaded', async () => {
     newsletterForm.init();
     buttonEffects.init();
     formEnhancements.init();
+    
+    // Mobile enhancements only on mobile devices
+    if (window.innerWidth <= 768) {
+        mobileEnhancements.init();
+    }
 });
 
 // Handle page visibility for better UX
