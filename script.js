@@ -100,20 +100,20 @@ const languageSwitcher = {
     },
     
     updateMetaTags(lang) {
-        // Update title tag with Athens location for better local SEO
+        // Update title tag for SEO - keeping Athens in keywords only
         if (lang === 'el') {
-            document.title = 'Χριστιάνα Ζενέλη - Κλινική Ψυχολόγος | Θεραπεία Άγχους & Online Συνεδρίες στην Αθήνα';
-            this.updateMetaContent('description', 'Κλινική Ψυχολόγος στην Αθήνα. Εξειδικευμένη θεραπεία άγχους, κατάθλιψης, διαχείρισης στρες και συμβουλευτική ζευγαριών στην Αθήνα. Online συνεδρίες και ιδιαίτερες συνεδρίες. Έμπειρη, συμπονετική και επαγγελματική ψυχολογική υποστήριξη στην Αθήνα.');
-            this.updateMetaContent('keywords', 'θεραπεία Αθήνα, ψυχολόγος Αθήνα, κλινική ψυχολόγος Αθήνα, θεραπεία άγχους Αθήνα, θεραπεία κατάθλιψης Αθήνα, online ψυχοθεραπεία Αθήνα, συμβουλευτική ζευγαριών Αθήνα, διαχείριση στρες Αθήνα, ψυχολογική υποστήριξη Αθήνα, ψυχοθεραπεία Αθήνα');
-            this.updateMetaProperty('og:title', 'Χριστιάνα Ζενέλη - Κλινική Ψυχολόγος | Θεραπεία Άγχους & Online Συνεδρίες στην Αθήνα');
-            this.updateMetaProperty('og:description', 'Κλινική Ψυχολόγος στην Αθήνα. Εξειδικευμένη θεραπεία άγχους, κατάθλιψης, διαχείρισης στρες και συμβουλευτική ζευγαριών στην Αθήνα. Online συνεδρίες.');
+            document.title = 'Χριστιάνα Ζενέλη - Κλινική Ψυχολόγος | Θεραπεία Άγχους & Online Συνεδρίες';
+            this.updateMetaContent('description', 'Κλινική Ψυχολόγος. Εξειδικευμένη θεραπεία άγχους, κατάθλιψης και διαχείρισης στρες. Online συνεδρίες και ιδιαίτερες συνεδρίες. Έμπειρη, συμπονετική και επαγγελματική ψυχολογική υποστήριξη.');
+            this.updateMetaContent('keywords', 'θεραπεία Αθήνα, ψυχολόγος Αθήνα, κλινική ψυχολόγος Αθήνα, θεραπεία άγχους Αθήνα, θεραπεία κατάθλιψης Αθήνα, online ψυχοθεραπεία Αθήνα, διαχείριση στρες Αθήνα, ψυχολογική υποστήριξη Αθήνα, ψυχοθεραπεία Αθήνα');
+            this.updateMetaProperty('og:title', 'Χριστιάνα Ζενέλη - Κλινική Ψυχολόγος | Θεραπεία Άγχους & Online Συνεδρίες');
+            this.updateMetaProperty('og:description', 'Κλινική Ψυχολόγος. Εξειδικευμένη θεραπεία άγχους, κατάθλιψης και διαχείρισης στρες. Online συνεδρίες.');
             this.updateMetaProperty('og:locale', 'el_GR');
         } else {
-            document.title = 'Christiana Zeneli - Clinical Psychologist | Anxiety Therapy & Online Sessions in Athens';
-            this.updateMetaContent('description', 'Clinical Psychologist in Athens, Greece. Specialized therapy for anxiety, depression, stress management, and couples counseling in Athens. Online sessions and private consultations. Experienced, compassionate, and professional psychological support in Athens.');
-            this.updateMetaContent('keywords', 'therapy Athens, therapist Athens, psychologist Athens, clinical psychologist Athens, anxiety therapy Athens, depression therapy Athens, couples therapy Athens, online therapy Athens, therapy in Athens Greece');
-            this.updateMetaProperty('og:title', 'Christiana Zeneli - Clinical Psychologist | Anxiety Therapy & Online Sessions in Athens');
-            this.updateMetaProperty('og:description', 'Clinical Psychologist in Athens, Greece. Specialized therapy for anxiety, depression, stress management, and couples counseling in Athens. Online sessions.');
+            document.title = 'Christiana Zeneli - Clinical Psychologist | Anxiety Therapy & Online Sessions';
+            this.updateMetaContent('description', 'Clinical Psychologist. Specialized therapy for anxiety, depression, and stress management. Online sessions and private consultations. Experienced, compassionate, and professional psychological support.');
+            this.updateMetaContent('keywords', 'therapy Athens, therapist Athens, psychologist Athens, clinical psychologist Athens, anxiety therapy Athens, depression therapy Athens, online therapy Athens, therapy in Athens Greece');
+            this.updateMetaProperty('og:title', 'Christiana Zeneli - Clinical Psychologist | Anxiety Therapy & Online Sessions');
+            this.updateMetaProperty('og:description', 'Clinical Psychologist. Specialized therapy for anxiety, depression, and stress management. Online sessions.');
             this.updateMetaProperty('og:locale', 'en_US');
         }
     },
@@ -196,9 +196,14 @@ const smoothScroll = {
     }
 };
 
-// Contact form handling
+// Contact form handling with EmailJS
 const contactForm = {
     init() {
+        // Initialize EmailJS
+        if (typeof emailjs !== 'undefined') {
+            emailjs.init("v1OlsYfRQaJl8gnma"); // Replace with your EmailJS public key
+        }
+        
         const form = document.getElementById('contactForm');
         if (form) {
             form.addEventListener('submit', (e) => {
@@ -208,32 +213,62 @@ const contactForm = {
         }
     },
     
-    handleSubmit(form) {
+    async handleSubmit(form) {
         const formData = new FormData(form);
         const data = Object.fromEntries(formData);
+        const submitButton = form.querySelector('button[type="submit"]');
+        const originalButtonText = submitButton.textContent;
         
-        // Here you would typically send the data to a server
-        // For now, we'll just show a success message
-        const successMessage = this.currentLang === 'en' 
-            ? 'Thank you! Your message has been sent. I will get back to you soon.'
-            : 'Ευχαριστούμε! Το μήνυμά σας έχει σταλεί. Θα επικοινωνήσω μαζί σας σύντομα.';
+        // Disable button during submission
+        submitButton.disabled = true;
+        submitButton.textContent = this.currentLang === 'en' ? 'Sending...' : 'Αποστολή...';
         
-        alert(successMessage);
-        form.reset();
-        
-        // In a real implementation, you would:
-        // fetch('/api/contact', {
-        //     method: 'POST',
-        //     headers: { 'Content-Type': 'application/json' },
-        //     body: JSON.stringify(data)
-        // })
-        // .then(response => response.json())
-        // .then(data => {
-        //     // Handle success
-        // })
-        // .catch(error => {
-        //     // Handle error
-        // });
+        try {
+            // Send email notification using EmailJS
+            if (typeof emailjs !== 'undefined') {
+                await emailjs.send(
+                    'site_email1',      // Replace with your EmailJS Service ID
+                    'template_nzajsmc',     // Replace with your EmailJS Template ID for contact form
+                    {
+                        to_email: 'zeneli.psychologist@gmail.com',
+                        from_name: data.name,
+                        from_email: data.email,
+                        phone: data.phone || 'Not provided',
+                        message: data.message,
+                        timestamp: new Date().toLocaleString(),
+                        date: new Date().toLocaleDateString(),
+                        time: new Date().toLocaleTimeString(),
+                        language: languageSwitcher.currentLang,
+                        form_type: 'Appointment Booking',
+                        page_url: window.location.href
+                    }
+                );
+                
+                const successMessage = this.currentLang === 'en' 
+                    ? 'Thank you! Your message has been sent. I will get back to you soon.'
+                    : 'Ευχαριστούμε! Το μήνυμά σας έχει σταλεί. Θα επικοινωνήσω μαζί σας σύντομα.';
+                
+                alert(successMessage);
+                form.reset();
+            } else {
+                // Fallback if EmailJS is not loaded
+                console.error('EmailJS not loaded');
+                const errorMessage = this.currentLang === 'en'
+                    ? 'There was an issue sending your message. Please email us directly at zeneli.psychologist@gmail.com'
+                    : 'Υπήρξε πρόβλημα με την αποστολή του μηνύματος. Παρακαλώ στείλτε μας email απευθείας στο zeneli.psychologist@gmail.com';
+                alert(errorMessage);
+            }
+        } catch (error) {
+            console.error('Contact form error:', error);
+            const errorMessage = this.currentLang === 'en'
+                ? 'There was an issue sending your message. Please try again or email us directly at zeneli.psychologist@gmail.com'
+                : 'Υπήρξε πρόβλημα με την αποστολή του μηνύματος. Παρακαλώ δοκιμάστε ξανά ή στείλτε μας email απευθείας στο zeneli.psychologist@gmail.com';
+            alert(errorMessage);
+        } finally {
+            // Re-enable button
+            submitButton.disabled = false;
+            submitButton.textContent = originalButtonText;
+        }
     },
     
     get currentLang() {
@@ -345,14 +380,9 @@ const faqAccordion = {
     }
 };
 
-// Newsletter form handling
+// Newsletter form handling with EmailJS
 const newsletterForm = {
     init() {
-        // Initialize EmailJS
-        if (typeof emailjs !== 'undefined') {
-            emailjs.init("YOUR_PUBLIC_KEY"); // Will be set after user configures EmailJS
-        }
-        
         const form = document.getElementById('newsletterForm');
         if (form) {
             form.addEventListener('submit', (e) => {
@@ -378,35 +408,40 @@ const newsletterForm = {
             // Send email notification using EmailJS
             if (typeof emailjs !== 'undefined') {
                 await emailjs.send(
-                    'YOUR_SERVICE_ID',      // EmailJS Service ID
-                    'YOUR_TEMPLATE_ID',     // EmailJS Template ID
+                    'site_email1',      // Replace with your EmailJS Service ID
+                    'template_uquvf7q',     // Replace with your EmailJS Template ID for newsletter
                     {
-                        to_email: 'kostasmavrg@gmail.com',
+                        to_email: 'zeneli.psychologist@gmail.com',
                         subscriber_email: email,
                         timestamp: new Date().toLocaleString(),
                         date: new Date().toLocaleDateString(),
                         time: new Date().toLocaleTimeString(),
-                        user_agent: navigator.userAgent,
                         language: languageSwitcher.currentLang,
+                        form_type: 'Newsletter Subscription',
                         page_url: window.location.href
                     }
                 );
+                
+                const successMessage = languageSwitcher.currentLang === 'en' 
+                    ? 'Thank you for subscribing! You will receive our latest updates.'
+                    : 'Ευχαριστούμε για την εγγραφή! Θα λαμβάνετε τις τελευταίες μας ενημερώσεις.';
+                
+                alert(successMessage);
+                form.reset();
+            } else {
+                // Fallback if EmailJS is not loaded
+                console.error('EmailJS not loaded');
+                const errorMessage = languageSwitcher.currentLang === 'en'
+                    ? 'There was an issue with your subscription. Please email us directly at zeneli.psychologist@gmail.com'
+                    : 'Υπήρξε πρόβλημα με την εγγραφή σας. Παρακαλώ στείλτε μας email απευθείας στο zeneli.psychologist@gmail.com';
+                alert(errorMessage);
             }
-            
-            const successMessage = languageSwitcher.currentLang === 'en' 
-                ? 'Thank you for subscribing! You will receive our latest updates.'
-                : 'Ευχαριστούμε για την εγγραφή! Θα λαμβάνετε τις τελευταίες μας ενημερώσεις.';
-            
-            alert(successMessage);
-            form.reset();
         } catch (error) {
             console.error('Newsletter subscription error:', error);
-            // Still show success to user even if email fails (graceful degradation)
-            const successMessage = languageSwitcher.currentLang === 'en' 
-                ? 'Thank you for subscribing! You will receive our latest updates.'
-                : 'Ευχαριστούμε για την εγγραφή! Θα λαμβάνετε τις τελευταίες μας ενημερώσεις.';
-            alert(successMessage);
-            form.reset();
+            const errorMessage = languageSwitcher.currentLang === 'en'
+                ? 'There was an issue with your subscription. Please try again or email us directly at zeneli.psychologist@gmail.com'
+                : 'Υπήρξε πρόβλημα με την εγγραφή σας. Παρακαλώ δοκιμάστε ξανά ή στείλτε μας email απευθείας στο zeneli.psychologist@gmail.com';
+            alert(errorMessage);
         } finally {
             // Re-enable button
             submitButton.disabled = false;
